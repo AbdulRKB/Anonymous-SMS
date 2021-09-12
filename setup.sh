@@ -11,6 +11,7 @@ install(){
     python3 sms.py
     kill $PID
     echo "\n"
+    clear
 }
 
 
