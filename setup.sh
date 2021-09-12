@@ -9,6 +9,7 @@ install(){
     cd Anonymous-SMS
     pip install -r requirements.txt
     kill $PID
+    exit
 }
 
 
