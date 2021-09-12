@@ -8,7 +8,7 @@ install(){
     git clone https://github.com/CyberTitus/Anonymous-SMS.git > /dev/null
     cd Anonymous-SMS
     pip install -r requirements.txt
-    pkill $PID
+    kill $PID
 }
 
 
