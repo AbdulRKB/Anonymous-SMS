@@ -6,7 +6,6 @@ install(){
     pkg install git -y > /dev/null 2>&1 &
     pkg install python -y > /dev/null 2>&1 &
     git clone https://github.com/CyberTitus/Anonymous-SMS.git > /dev/null 2>&1 &
-    cd Anonymous-SMS
     pip install -r requirements.txt > /dev/null
     python3 sms.py
     kill $PID
