@@ -10,7 +10,6 @@ install(){
     pip install -r requirements.txt > /dev/null
     kill $PID
     printf '\n'
-    python3 sms.py
 }
 
 
