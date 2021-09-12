@@ -3,9 +3,9 @@
 install(){
     loading &
     PID=$!
-    pkg install git -y > /dev/null
-    pkg install python -y > /dev/null
-    git clone https://github.com/CyberTitus/Anonymous-SMS.git > /dev/null
+    pkg install git -y > /dev/null 2>&1 &
+    pkg install python -y > /dev/null 2>&1 &
+    git clone https://github.com/CyberTitus/Anonymous-SMS.git > /dev/null 2>&1 &
     cd Anonymous-SMS
     pip install -r requirements.txt > /dev/null
     kill $PID
