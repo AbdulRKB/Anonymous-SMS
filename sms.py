@@ -17,8 +17,7 @@ class SMS:
 			click.secho('[-] '+res['error'], fg="red")
 
 
-
-if __name__ == '__main__':
+def main():
 	try:
 		NUMBER = click.prompt('Enter Number (Include country code, e.g. +92)', type=str)
 		TEXT = str(input("Enter Message: "))
@@ -31,3 +30,7 @@ if __name__ == '__main__':
 	else:
 		click.secho("[-] Good bye!", fg="red")
 		exit()
+
+
+if __name__ == '__main__':
+	main()
