@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASMS</title>
+    <style>
+        body{
+            background-color: #1f2226;
+            text-align: center;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        .title{
+            color: #fff;
+            font-size: 42px;
+            margin: 0;
+            padding: 32px;
+        }
+        .group{
+            background-color: #16181c;
+            border-radius: 16px;
+            padding: 16px;
+            text-align: start;
+            width: 80%;
+            margin: auto;
+        }
+        .input-group{
+            display: flex;
+            flex-direction: column-reverse;
+            gap: 2px;
+        }
+        .input-group > input, textarea{
+            padding: 12px;
+            font-size: 18px;
+            outline: 0;
+            border-radius: 8px;
+            border: 0;
+            background-color: #1f2226;
+            border: 2px solid #fff;
+            border-radius: 8px;
+            color: #fff;
+            resize: vertical;
+            max-height: 195px;
+        }
+        textarea{
+            min-height: 85px;
+        }
+        .group > .input-group{
+            margin: 10px 0;
+        }
+        .group > input[type="submit"]{
+            background-color: #1f2226;
+            border: 2px solid #fff;
+            border-radius: 8px;
+            color: #fff;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 0;
+            padding: 8px 16px;
+            transition: all 0.2s ease-in-out;
+        }
+        label{
+            color: #fff;
+            font-size: 16px;
+            margin: 0;
+            padding: 0;
+            transition: all 0.2s ease-in-out;
+            font-weight: bold;
+        }
+        .msg{
+            background-color: #96b96f;
+            padding: 16px;
+            text-align: center;
+            font-weight: bolder;
+            font-size: larger;
+            border-radius: 14px;
+        }
+
+
+        ::selection
+        {
+            background-color: rgba(1, 1, 1, 0.17);
+        }
+        /* Chrome, Safari, Edge, Opera */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+        }
+
+        /* Firefox */
+        input[type=number] {
+          -moz-appearance: textfield;
+}
+    </style>
+</head>
+<body>
+    <h1 class="title">Anonymous SMS</h1>
+    <form action="#" class="group" onsubmit="event.preventDefault();send();">
+        <div class="msg"></div>
+        <div class="input-group">
+            <input type="number" id="phone" placeholder="Phone Number">
+            <label for="phone">Phone Number</label>
+        </div>
+        <div class="input-group">
+            <textarea type="text" id="text" placeholder="Text"></textarea>
+            <label for="phone">Message</label>
+        </div>
+        <input type="submit" value="Submit">
+    </form>
+    <script>
+        document.querySelector('.msg').style.display = "none";
+        // document.querySelector('.msg').innerHTML = "SMS Sent!";
+        const phone = document.querySelector('#phone');
+        const text = document.querySelector('#text');
+        function send(){
+            let phone_number = "+" + phone.value;
+            let message = text.value;
+            const data = {phone: phone_number,message: message,key: "textbelt"};
+            const requestOptions = {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(data)
+            };
+        fetch("https://textbelt.com/text", requestOptions).then(response => response.json()).then(data => {
+            console.log(data.success)
+            if(data.success){
+                document.querySelector('.msg').style.display = "block";
+                document.querySelector('.msg').innerHTML = "SMS Sent!";
+                document.querySelector('.msg').style.backgroundColor = "#96b96f";
+                setTimeout(() => {
+                    document.querySelector('.msg').style.display = "none";
+                }, 5000);
+            } else{
+                document.querySelector('.msg').style.display = "block";
+                document.querySelector('.msg').innerHTML = "SMS Failed!";
+                document.querySelector('.msg').style.backgroundColor = "#cd3528";
+                alert("ERROR: "+data.error);
+                setTimeout(() => {
+                    document.querySelector('.msg').style.display = "none";
+                }, 5000);
+            }
+        }).catch(error => console.error('Error:', error));
+        }
+    </script>
+</body>
+</html>
