@@ -6,12 +6,12 @@
 ## Installation
 Run the following commands to use the tool
 ```bash
-git clone https://github.com/CyberTitus/Anonymous-SMS
+git clone https://github.com/AbdulRKB/Anonymous-SMS
 cd Anonymous-SMS
 pip install -r requirements.txt
 python main.py
 ```
 ## License
-*This repository is licensed under the [MIT License](https://github.com/CyberTitus/Anonymous-SMS/blob/main/LICENSE)*
+*This repository is licensed under the [MIT License](https://github.com/AbdulRKB/Anonymous-SMS/blob/main/LICENSE)*
 
 </div>
