@@ -15,7 +15,6 @@ class SMS:
 			click.secho("[-] Couldn't Send Message!", fg="red")
 			click.secho('[-] '+res['error'], fg="red")
 
-
 def main():
 	try:
 		NUMBER = click.prompt('Enter Number (Include country code, e.g. +92)', type=str)
